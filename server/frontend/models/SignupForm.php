@@ -12,7 +12,8 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
-
+    public $mother_tongue;
+    public $profile_for;
 
     /**
      * @inheritdoc
@@ -22,6 +23,8 @@ class SignupForm extends Model
         return [
             ['username', 'trim'],
             ['username', 'required'],
+            ['profile_for','required'],
+            ['mother_tongue','required'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
@@ -48,11 +51,13 @@ class SignupForm extends Model
         }
         
         $user = new User();
-        $user->username = $this->username;
+        $user->profile_for = $this->profile_for;
+        $user->username = $this->username;        
         $user->email = $this->email;
+        $user->mother_tongue = $this->mother_tongue;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        
+
         return $user->save() ? $user : null;
     }
 }
