@@ -20,7 +20,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($model, 'profile_for')->dropDownList(['1'=>'Self','2'=>'Sister','3'=>'Brother','4'=>'Daughter','4'=>'Son']) ?>
 
+                <?= $form->field($model, 'mother_tongue')->dropDownList(['1'=>'Marathi','2'=>'Hindi','3'=>'Kannada','4'=>'Telugu','5'=>'Tamil',]) ?> 
+                
                 <?= $form->field($model, 'email') ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
