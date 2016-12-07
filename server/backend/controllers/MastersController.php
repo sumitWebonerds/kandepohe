@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Profiles;
-use common\models\ProfilesSearch;
+use common\models\Masters;
+use common\models\MastersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ProfilesController implements the CRUD actions for Profiles model.
+ * MastersController implements the CRUD actions for Masters model.
  */
-class ProfilesController extends Controller
+class MastersController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Lists all Profiles models.
+     * Lists all Masters models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ProfilesSearch();
+        $searchModel = new MastersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,8 +45,8 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Displays a single Profiles model.
-     * @param integer $id
+     * Displays a single Masters model.
+     * @param string $id
      * @return mixed
      */
     public function actionView($id)
@@ -57,13 +57,13 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Creates a new Profiles model.
+     * Creates a new Masters model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Profiles();
+        $model = new Masters();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,9 +75,9 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Updates an existing Profiles model.
+     * Updates an existing Masters model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionUpdate($id)
@@ -94,9 +94,9 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Deletes an existing Profiles model.
+     * Deletes an existing Masters model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionDelete($id)
@@ -107,15 +107,15 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Finds the Profiles model based on its primary key value.
+     * Finds the Masters model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Profiles the loaded model
+     * @param string $id
+     * @return Masters the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Profiles::findOne($id)) !== null) {
+        if (($model = Masters::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

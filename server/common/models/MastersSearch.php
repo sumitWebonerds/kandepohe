@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Contact;
+use common\models\Masters;
 
 /**
- * ContactSearch represents the model behind the search form about `common\models\Contact`.
+ * MastersSearch represents the model behind the search form about `common\models\Masters`.
  */
-class ContactSearch extends Contact
+class MastersSearch extends Masters
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ContactSearch extends Contact
     public function rules()
     {
         return [
-            [['id', 'phone'], 'integer'],
-            [['name', 'email', 'message'], 'safe'],
+            [['id', 'is_active'], 'integer'],
+            [['name', 'type'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ContactSearch extends Contact
      */
     public function search($params)
     {
-        $query = Contact::find();
+        $query = Masters::find();
 
         // add conditions that should always apply here
 
@@ -60,12 +60,11 @@ class ContactSearch extends Contact
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'phone' => $this->phone,
+            'is_active' => $this->is_active,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'message', $this->message]);
+            ->andFilterWhere(['like', 'type', $this->type]);
 
         return $dataProvider;
     }
