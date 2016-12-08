@@ -12,7 +12,7 @@ class m161208_040409_create_contact_table extends Migration
      */
     public function up()
     {
-        $this->execute("ALTER TABLE `contact` ADD `user_id` BIGINT NOT NULL AFTER `id`;")
+        $this->execute("ALTER TABLE `contact` ADD `user_id` BIGINT NOT NULL AFTER `id`;");
     }
 
     /**

@@ -70,6 +70,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout='nonav';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }

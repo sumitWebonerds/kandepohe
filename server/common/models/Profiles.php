@@ -66,7 +66,7 @@ class Profiles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'education_id', 'gender'], 'required'],
+            [[ 'gender','name', 'profile_image', 'date_of_birth', 'marital_status', 'country', 'state', 'city', 'blood_group', 'complextion', 'built', 'religion', 'caste', 'sub_caste', 'diet', 'birthplace', 'rashi', 'nakshatra', 'nadi', 'gan', 'gotra', 'education', 'occupation', 'income', 'father', 'mother', 'expected_caste', 'expected_education', 'expected_occupation','mobile', 'charan', 'brothers', 'sisters', 'expected_min_age', 'expected_max_age','height', 'expected_min_height', 'expected_max_height','birthtime'], 'required'],
             [['user_id', 'education_id', 'mobile', 'charan', 'brothers', 'sisters', 'expected_min_age', 'expected_max_age'], 'integer'],
             [['gender'], 'string'],
             [['height', 'expected_min_height', 'expected_max_height'], 'number'],

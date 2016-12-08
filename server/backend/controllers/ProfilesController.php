@@ -66,7 +66,7 @@ class ProfilesController extends Controller
         $model = new Profiles();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['education/create', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,

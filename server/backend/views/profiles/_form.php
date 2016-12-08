@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Profiles */
@@ -12,19 +13,18 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
-
-    <?= $form->field($model, 'education_id')->textInput() ?>
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+   <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'profile_image')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'date_of_birth')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'marital_status')->textInput(['maxlength' => true]) ?>
+    <?php
+        $maritalStatus=ArrayHelper::map(\common\models\Masters::find()->where(['type'=>'marital_status'])->asArray()->all(),'name','name');
+        echo $form->field($model, 'marital_status')->dropDownList($maritalStatus, ['prompt' => 'select marital status']);    
+         ?>
 
-    <?= $form->field($model, 'gender')->dropDownList([ 'm' => 'M', 'f' => 'F', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'gender')->dropDownList([ 'm' => 'Male', 'f' => 'Female', ], ['prompt' => 'select gender']) ?>
 
     <?= $form->field($model, 'country')->textInput(['maxlength' => true]) ?>
 
@@ -36,7 +36,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'height')->textInput() ?>
 
-    <?= $form->field($model, 'blood_group')->textInput(['maxlength' => true]) ?>
+    <?php
+        $bloodGroup=ArrayHelper::map(\common\models\Masters::find()->where(['type'=>'blood_group'])->asArray()->all(),'name','name');
+        echo $form->field($model, 'blood_group')->dropDownList($bloodGroup, ['prompt' => 'select blood group']);    
+    ?>
 
     <?= $form->field($model, 'complextion')->textInput(['maxlength' => true]) ?>
 
@@ -56,7 +59,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'rashi')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'nakshatra')->textInput(['maxlength' => true]) ?>
+    <?php
+        $nakshtra=ArrayHelper::map(\common\models\Masters::find()->where(['type'=>'nakshatra'])->asArray()->all(),'name','name');
+        echo $form->field($model, 'nakshatra')->dropDownList($nakshtra, ['prompt' => 'select nakshatra']);    
+    ?>
 
     <?= $form->field($model, 'charan')->textInput() ?>
 

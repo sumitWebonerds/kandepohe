@@ -28,7 +28,7 @@ class Masters extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'type'], 'required'],
+            [['name', 'type','is_active'], 'required'],
             [['is_active'], 'integer'],
             [['name', 'type'], 'string', 'max' => 255],
         ];

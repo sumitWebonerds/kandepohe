@@ -36,7 +36,9 @@ class SuccessStories extends \yii\db\ActiveRecord
         return [
             [['groom_id', 'bride_id', 'marriage_of_this_groom', 'setteled_with_this_bride', 'email', 'city', 'mobile', 'marriage_date', 'success_story'], 'required'],
             [['groom_id', 'bride_id', 'mobile'], 'integer'],
+            [['mobile'], 'match','pattern'=>'/^[0-9]{10}$/'],
             [['marriage_date'], 'safe'],
+            [['email'], 'email'],
             [['success_story'], 'string'],
             [['marriage_of_this_groom', 'setteled_with_this_bride', 'email', 'city'], 'string', 'max' => 255],
         ];
