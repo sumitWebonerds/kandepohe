@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Contact */
+/* @var $model common\models\Education */
 
-$this->title = 'Create Contact';
-// $this->params['breadcrumbs'][] = ['label' => 'Contacts', 'url' => ['index']];
+$this->title = 'Create Education';
+// $this->params['breadcrumbs'][] = ['label' => 'Educations', 'url' => ['index']];
 // $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="grid_3">
@@ -19,10 +19,11 @@ $this->title = 'Create Contact';
         <li class="current-page"><?= Html::encode($this->title) ?></li>
      </ul>
    </div>
-   <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+
 </div>
 </div>

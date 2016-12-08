@@ -2483,15 +2483,16 @@ form#contact-form {
     border-radius: 0;
     outline: none;
     -webkit-appearance: none;
-    padding: 15px;
-    margin-bottom:5px;
+    /*padding: 15px;*/
+    /*margin-bottom:5px;*/
     font-size: 0.85em;
-    color: #999;
+    /*color: #999;*/
 }
+
 #contact-form textarea{
 	height:150px;
 }
-#contact-form input[type="submit"] {
+#contact-form button[type="submit"] {
     color: #FFF;
     font-size: 1em;
     padding: 13px 20px;
@@ -3523,4 +3524,10 @@ a.order-btn {
 ul.feature_list.feature_list1 {
     margin-bottom: 1em;
 }
+}
+.control-lable{
+  color: white;
+}
+.about_middle label {
+    color: white;
 }

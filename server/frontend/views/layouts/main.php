@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -24,7 +25,6 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
 <div class="wrap">
     <div class="navbar navbar-inverse-blue navbar">
     <!--<div class="navbar navbar-inverse-blue navbar-fixed-top">-->
@@ -36,15 +36,21 @@ AppAsset::register($this);
                 <li class="green">
                     <a href="#" class="icon-home"></a>
                     <ul>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="register.html">Register</a></li>
-                        <li><a href="index.html">Logout</a></li>
+                        <?php
+                          if (Yii::$app->user->isGuest) {
+                           ?> 
+                        <li><a href="<?php echo Url::toRoute('site/login');?>">Login</a></li>
+                        <li><a href="<?php echo Url::toRoute('site/signup');?>">Register</a></li>
+                        <?php }else{?>
+                         <li><a href="#"><?= 'Hii, '.ucfirst(Yii::$app->user->identity->username) ?></a></li> 
+                        <li><?= Html::a('Logout', ['site/logout'], ['data' => ['method' => 'post']]) ?></li>
+                      <?php  }?>
                     </ul>
                 </li>
                </ul>
              </nav>
            </div>
-           <a class="brand" href="index.html"><img src="kandepohe_static/images/logo.png" alt="logo"></a>
+           <a class="brand" href="<?php echo Url::toRoute('site/index');?>"><img src="kandepohe_static/images/logo.png" alt="logo"></a>
            <div class="pull-right">
             <nav class="navbar nav_bottom" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -60,8 +66,8 @@ AppAsset::register($this);
            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav nav_1">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="<?php echo Url::toRoute('site/index');?>">Home</a></li>
+                    <li><a href="<?php echo Url::toRoute('site/about');?>">About</a></li>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Matches<span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
@@ -92,7 +98,7 @@ AppAsset::register($this);
                         <li><a href="upgrade.html">Upgrade</a></li>
                       </ul>
                     </li>
-                    <li class="last"><a href="contact.html">Contacts</a></li>
+                    <li class="last"><a href="<?php echo Url::toRoute('site/contact');?>">Contacts</a></li>
                 </ul>
              </div><!-- /.navbar-collapse -->
             </nav>

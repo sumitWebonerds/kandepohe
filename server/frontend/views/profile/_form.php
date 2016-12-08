@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'marital_status')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'gender')->dropDownList([ 'm' => 'M', 'f' => 'F', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'gender')->dropDownList([ 'm' => 'Male', 'f' => 'Female', ], ['prompt' => '']) ?>
 
     <?= $form->field($model, 'country')->textInput(['maxlength' => true]) ?>
 
@@ -95,7 +95,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'expected_occupation')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success btn_1' : 'btn btn-primary btn_1']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

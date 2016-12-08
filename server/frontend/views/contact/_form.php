@@ -21,7 +21,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'message')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success btn_1' : 'btn btn-primary btn_1']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
