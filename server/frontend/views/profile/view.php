@@ -11,9 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Profiles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profiles-view">
-
     <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -30,9 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'user_id',
-            'education_id',
-            'name',
-            'profile_image',
+            'name',            
+            [
+                'attribute'=>'profile_image',
+                'value'=>'css/'.$model->profile_image,
+                'format' => ['image',['width'=>'100','height'=>'100','class'=>'img-responsive']],
+            ],
             'date_of_birth',
             'marital_status',
             'gender',

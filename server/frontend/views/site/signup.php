@@ -7,6 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 
 $this->title = 'Signup/Register';
 
@@ -25,9 +26,16 @@ $this->title = 'Signup/Register';
          <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
             
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-                <?= $form->field($model, 'profile_for')->dropDownList(['1'=>'Self','2'=>'Sister','3'=>'Brother','4'=>'Daughter','4'=>'Son']) ?>
+                <?php 
+                $dataCategory=ArrayHelper::map(\common\models\Masters::find()->where(['type'=>'profile_for'])->asArray()->all(), 'id', 'name');
 
-                <?= $form->field($model, 'mother_tongue')->dropDownList(['1'=>'Marathi','2'=>'Hindi','3'=>'Kannada','4'=>'Telugu','5'=>'Tamil',]) ?> 
+
+                 echo  $form->field($model, 'profile_for')->dropDownList($dataCategory,['prompt'=>'Profile For']) ?>
+
+                <?php
+                $motherTongue=ArrayHelper::map(\common\models\Masters::find()->where(['type'=>'mother_tongue'])->asArray()->all(), 'id', 'name');
+
+                echo $form->field($model, 'mother_tongue')->dropDownList($motherTongue ,['prompt'=>'Mother Tongue']) ?> 
                 
                 <?= $form->field($model, 'email') ?>
 
@@ -37,15 +45,6 @@ $this->title = 'Signup/Register';
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary btn_1', 'name' => 'signup-button']) ?>
                 </div>
          <?php ActiveForm::end(); ?>
-      </div>
-      <div class="col-sm-6">
-         <ul class="sharing">
-            <li><a href="#" class="facebook" title="Facebook"><i class="fa fa-boxed fa-fw fa-facebook"></i> Share on Facebook</a></li>
-            <li><a href="#" class="twitter" title="Twitter"><i class="fa fa-boxed fa-fw fa-twitter"></i> Tweet</a></li>
-            <li><a href="#" class="google" title="Google"><i class="fa fa-boxed fa-fw fa-google-plus"></i> Share on Google+</a></li>
-            <li><a href="#" class="linkedin" title="Linkedin"><i class="fa fa-boxed fa-fw fa-linkedin"></i> Share on LinkedIn</a></li>
-            <li><a href="#" class="mail" title="Email"><i class="fa fa-boxed fa-fw fa-envelope-o"></i> E-mail</a></li>
-         </ul>
       </div>
       <div class="clearfix"> </div>
    </div>

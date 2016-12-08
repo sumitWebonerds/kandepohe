@@ -143,7 +143,14 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-
+    public function actionService()
+    {
+        return $this->render('service');
+    }
+    public function actionGallery()
+    {
+        return $this->render('gallery');
+    }
     /**
      * Signs user up.
      *

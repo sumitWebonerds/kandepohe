@@ -8,7 +8,7 @@ use common\models\ProfilesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\UploadedFile;
 /**
  * ProfileController implements the CRUD actions for Profiles model.
  */
@@ -69,11 +69,18 @@ class ProfileController extends Controller
             $this->redirect(array('education/create'));
         }else{
             $model = new Profiles();
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post())) {
+               $imageName = "profile_image_".rand();
+               $model->profile_image = UploadedFile::getInstance($model,'profile_image');
+               $model->profile_image->saveAs('css/'.$imageName.'.'.$model->profile_image->extension);
+               $model->profile_image = $imageName.'.'.$model->profile_image->extension;
+               $model->user_id = Yii::$app->user->getId();
+               $model->save();
+               // if($model->save()){
+                    // $this->redirect(array('education/create')); 
+               // }
                
-               
-               $this->redirect(array('education/create'));
-               // return $this->redirect(['view', 'id' => $model->id]);
+               return $this->redirect(['view', 'id' => $model->id]);
             } else {
                 return $this->render('create', [
                     'model' => $model,
@@ -92,8 +99,21 @@ class ProfileController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $imageName = "profile_image_".rand();
+               $model->profile_image = UploadedFile::getInstance($model,'profile_image');
+               if(!empty($model->file)){
+               $model->profile_image->saveAs('css/'.$imageName.'.'.$model->profile_image->extension);
+               $model->profile_image = $imageName.'.'.$model->profile_image->extension;
+               $model->save(false);
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }else{  
+                    $pid = Yii::$app->user->identity->id;
+                    $customer = Profiles::find()->where(['id' => $pid])->one();
+                    $model->profile_image = $customer->profile_image;
+                    $model->save(false);    
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
         } else {
             return $this->render('update', [
                 'model' => $model,

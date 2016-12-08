@@ -9,7 +9,6 @@ use Yii;
  *
  * @property integer $id
  * @property integer $user_id
- * @property integer $education_id
  * @property string $name
  * @property string $profile_image
  * @property string $date_of_birth
@@ -66,12 +65,14 @@ class Profiles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'education_id', 'gender'], 'required'],
-            [['user_id', 'education_id', 'mobile', 'charan', 'brothers', 'sisters', 'expected_min_age', 'expected_max_age'], 'integer'],
+            [['name','marital_status', 'mobile', 'gender','profile_image','country', 'state', 'city', 'blood_group'], 'required'],
+            [['mobile', 'charan', 'brothers', 'sisters', 'expected_min_age', 'expected_max_age'], 'integer'],
+            [['mobile'],'match','pattern'=>'/^[0-9]{10}$/'],
             [['gender'], 'string'],
             [['height', 'expected_min_height', 'expected_max_height'], 'number'],
             [['birthtime'], 'safe'],
-            [['name', 'profile_image', 'date_of_birth', 'marital_status', 'country', 'state', 'city', 'blood_group', 'complextion', 'built', 'religion', 'caste', 'sub_caste', 'diet', 'birthplace', 'rashi', 'nakshatra', 'nadi', 'gan', 'gotra', 'education', 'occupation', 'income', 'father', 'mother', 'expected_caste', 'expected_education', 'expected_occupation'], 'string', 'max' => 255],
+            [['profile_image'],'file'],
+            [['name','marital_status', 'country', 'state', 'city', 'blood_group', 'complextion', 'built', 'religion', 'caste', 'sub_caste', 'diet', 'birthplace', 'rashi', 'nakshatra', 'nadi', 'gan', 'gotra', 'education', 'occupation', 'income', 'father', 'mother', 'expected_caste', 'expected_education', 'expected_occupation'], 'string', 'max' => 255],
         ];
     }
 
@@ -83,7 +84,6 @@ class Profiles extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'education_id' => 'Education ID',
             'name' => 'Name',
             'profile_image' => 'Profile Image',
             'date_of_birth' => 'Date Of Birth',

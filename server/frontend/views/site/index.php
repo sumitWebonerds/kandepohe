@@ -1,8 +1,21 @@
+<?php
+
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model \frontend\models\ContactForm */
+
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
+use yii\helpers\Url;
+
+$this->title = 'Home';
+?>
 <div class="banner">
   <div class="container">
     <div class="banner_info">
       <h3>Millions of verified Members</h3>
-      <a href="view_profile.html" class="hvr-shutter-out-horizontal">Create your Profile</a>
+      <a href="<?php echo Url::toRoute('site/signup');?>" class="hvr-shutter-out-horizontal">Create your Profile</a>
     </div>
   </div>
   <div class="profile_search">

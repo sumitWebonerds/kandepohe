@@ -68,36 +68,8 @@ AppAsset::register($this);
                 <ul class="nav navbar-nav nav_1">
                     <li><a href="<?php echo Url::toRoute('site/index');?>">Home</a></li>
                     <li><a href="<?php echo Url::toRoute('site/about');?>">About</a></li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Matches<span class="caret"></span></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="matches.html">New Matches</a></li>
-                        <li><a href="viewed-profile.html">Who Viewed my Profile</a></li>
-                        <li><a href="viewed-not_contacted.html">Viewed & not Contacted</a></li>
-                        <li><a href="members.html">Premium Members</a></li>
-                        <li><a href="shortlisted.html">Shortlisted Profile</a></li>
-                      </ul>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Search<span class="caret"></span></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="search.html">Regular Search</a></li>
-                        <li><a href="profile.html">Recently Viewed Profiles</a></li>
-                        <li><a href="search-id.html">Search By Profile ID</a></li>
-                        <li><a href="faq.html">Faq</a></li>
-                        <li><a href="shortcodes.html">Shortcodes</a></li>
-                      </ul>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages<span class="caret"></span></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="inbox.html">Inbox</a></li>
-                        <li><a href="inbox.html">New</a></li>
-                        <li><a href="inbox.html">Accepted</a></li>
-                        <li><a href="sent.html">Sent</a></li>
-                        <li><a href="upgrade.html">Upgrade</a></li>
-                      </ul>
-                    </li>
+                    <li><a href="<?php echo Url::toRoute('site/service');?>">Services</a></li>
+                    <li><a href="<?php echo Url::toRoute('site/gallery');?>">Gallery</a></li>
                     <li class="last"><a href="<?php echo Url::toRoute('site/contact');?>">Contacts</a></li>
                 </ul>
              </div><!-- /.navbar-collapse -->
@@ -181,8 +153,8 @@ AppAsset::register($this);
             });
             
         });
-       </script>
-       <script>
+</script>
+<script>
 $(document).ready(function(){
     $(".dropdown").hover(            
         function() {
@@ -195,6 +167,7 @@ $(document).ready(function(){
         }
     );
 });
+
 </script>
 </body>
 </html>

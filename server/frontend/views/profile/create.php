@@ -26,8 +26,3 @@ $this->title = 'Create Profiles';
     ]) ?>
  </div>
  </div>
-<div class="profiles-create">
-
-   
-
-</div>

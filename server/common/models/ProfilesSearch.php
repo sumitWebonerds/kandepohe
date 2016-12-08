@@ -18,7 +18,7 @@ class ProfilesSearch extends Profiles
     public function rules()
     {
         return [
-            [['id', 'user_id', 'education_id', 'mobile', 'charan', 'brothers', 'sisters', 'expected_min_age', 'expected_max_age'], 'integer'],
+            [['id', 'user_id','mobile', 'charan', 'brothers', 'sisters', 'expected_min_age', 'expected_max_age'], 'integer'],
             [['name', 'profile_image', 'date_of_birth', 'marital_status', 'gender', 'country', 'state', 'city', 'blood_group', 'complextion', 'built', 'religion', 'caste', 'sub_caste', 'diet', 'birthplace', 'birthtime', 'rashi', 'nakshatra', 'nadi', 'gan', 'gotra', 'education', 'occupation', 'income', 'father', 'mother', 'expected_caste', 'expected_education', 'expected_occupation'], 'safe'],
             [['height', 'expected_min_height', 'expected_max_height'], 'number'],
         ];
@@ -62,7 +62,6 @@ class ProfilesSearch extends Profiles
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'education_id' => $this->education_id,
             'mobile' => $this->mobile,
             'height' => $this->height,
             'birthtime' => $this->birthtime,
