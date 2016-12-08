@@ -6,19 +6,24 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
-$this->title = 'Signup';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Signup/Register';
+
 ?>
-<div class="site-signup">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>Please fill out the following fields to signup:</p>
-
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-
+<div class="grid_3">
+  <div class="container">
+   <div class="breadcrumb1">
+     <ul>
+        <a href="<?php echo Url::toRoute('site/index');?>"><i class="fa fa-home home_1"></i></a>
+        <span class="divider">&nbsp;|&nbsp;</span>
+        <li class="current-page"><?= Html::encode($this->title) ?></li>
+     </ul>
+   </div>
+   <div class="services">
+      <div class="col-sm-6 login_left">
+         <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+            
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
                 <?= $form->field($model, 'profile_for')->dropDownList(['1'=>'Self','2'=>'Sister','3'=>'Brother','4'=>'Daughter','4'=>'Son']) ?>
 
@@ -29,10 +34,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary btn_1', 'name' => 'signup-button']) ?>
                 </div>
-
-            <?php ActiveForm::end(); ?>
-        </div>
-    </div>
+         <?php ActiveForm::end(); ?>
+      </div>
+      <div class="col-sm-6">
+         <ul class="sharing">
+            <li><a href="#" class="facebook" title="Facebook"><i class="fa fa-boxed fa-fw fa-facebook"></i> Share on Facebook</a></li>
+            <li><a href="#" class="twitter" title="Twitter"><i class="fa fa-boxed fa-fw fa-twitter"></i> Tweet</a></li>
+            <li><a href="#" class="google" title="Google"><i class="fa fa-boxed fa-fw fa-google-plus"></i> Share on Google+</a></li>
+            <li><a href="#" class="linkedin" title="Linkedin"><i class="fa fa-boxed fa-fw fa-linkedin"></i> Share on LinkedIn</a></li>
+            <li><a href="#" class="mail" title="Email"><i class="fa fa-boxed fa-fw fa-envelope-o"></i> E-mail</a></li>
+         </ul>
+      </div>
+      <div class="clearfix"> </div>
+   </div>
+  </div>
 </div>
+

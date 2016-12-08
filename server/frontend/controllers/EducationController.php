@@ -3,16 +3,16 @@
 namespace frontend\controllers;
 
 use Yii;
-use common\models\Contact;
-use common\models\ContactSearch;
+use common\models\Education;
+use common\models\EducationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ContactController implements the CRUD actions for Contact model.
+ * EducationController implements the CRUD actions for Education model.
  */
-class ContactController extends Controller
+class EducationController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ContactController extends Controller
     }
 
     /**
-     * Lists all Contact models.
+     * Lists all Education models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ContactSearch();
+        $searchModel = new EducationSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ContactController extends Controller
     }
 
     /**
-     * Displays a single Contact model.
+     * Displays a single Education model.
      * @param integer $id
      * @return mixed
      */
@@ -57,43 +57,36 @@ class ContactController extends Controller
     }
 
     /**
-     * Creates a new Contact model.
+     * Creates a new Education model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-         $model = new Contact();
         $id = Yii::$app->user->getId();
-        $exists = Contact::find()->where( [ 'user_id' => $id  ] )->exists();
-        $count = Contact::find()->where(['user_id' => $id])->count();
-        if($exists){            
+        $count = Education::find()->where(['user_id' => $id])->count();
+        //echo $count;exit;
+        $exists = Education::find()->where( [ 'user_id' => $id  ] )->exists();
+        if($exists){
             if($count>=1){
-
                 return $this->render('create', [
                      'model' => $model,
                  ]);
-           }else{
-                $this->redirect(array('site/index'));
-                // return $this->render('create', [
-                //      'model' => $model,
-                //  ]);
-           }    
+           }            
         }else{
-           
-
+            $model = new Education();
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                 $this->redirect(array('site/index'));
             } else {
-                return $this->render('create', [
-                    'model' => $model,
-                ]);
+                 return $this->render('create', [
+                     'model' => $model,
+                 ]);
             }
         }
     }
 
     /**
-     * Updates an existing Contact model.
+     * Updates an existing Education model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -112,7 +105,7 @@ class ContactController extends Controller
     }
 
     /**
-     * Deletes an existing Contact model.
+     * Deletes an existing Education model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -125,15 +118,15 @@ class ContactController extends Controller
     }
 
     /**
-     * Finds the Contact model based on its primary key value.
+     * Finds the Education model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Contact the loaded model
+     * @return Education the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Contact::findOne($id)) !== null) {
+        if (($model = Education::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

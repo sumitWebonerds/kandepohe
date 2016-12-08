@@ -63,15 +63,22 @@ class ProfileController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Profiles();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-           $this->redirect(array('contact/create'));
-           // return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        $id = Yii::$app->user->getId();
+        $exists = Profiles::find()->where( [ 'user_id' => $id  ] )->exists();
+        if($exists){
+            $this->redirect(array('education/create'));
+        }else{
+            $model = new Profiles();
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+               
+               
+               $this->redirect(array('education/create'));
+               // return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         }
     }
 
