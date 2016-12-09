@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\User;
+use common\models\Sliders;
 
 /**
- * UserSearch represents the model behind the search form about `common\models\User`.
+ * SlidersSearch represents the model behind the search form about `common\models\Sliders`.
  */
-class UserSearch extends User
+class SlidersSearch extends Sliders
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['profile_for', 'username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'mother_tongue'], 'safe'],
+            [['id', 'status', 'created_by', 'updated_by', 'is_deleted'], 'integer'],
+            [['heading', 'caption', 'image_file', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class UserSearch extends User
      */
     public function search($params)
     {
-        $query = User::find();
+        $query = Sliders::find();
 
         // add conditions that should always apply here
 
@@ -61,17 +61,16 @@ class UserSearch extends User
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
+            'created_by' => $this->created_by,
             'created_at' => $this->created_at,
+            'updated_by' => $this->updated_by,
             'updated_at' => $this->updated_at,
+            'is_deleted' => $this->is_deleted,
         ]);
 
-        $query->andFilterWhere(['like', 'profile_for', $this->profile_for])
-            ->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
-            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'mother_tongue', $this->mother_tongue]);
+        $query->andFilterWhere(['like', 'heading', $this->heading])
+            ->andFilterWhere(['like', 'caption', $this->caption])
+            ->andFilterWhere(['like', 'image_file', $this->image_file]);
 
         return $dataProvider;
     }

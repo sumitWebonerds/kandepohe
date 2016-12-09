@@ -1,5 +1,4 @@
-
-            <div class="row">
+          <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Dashboard</h1>
                 </div>
@@ -12,11 +11,11 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
+                                    <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Comments!</div>
+                                    <div class="huge"><?= $groom_count ?></div>
+                                    <div>Grooms</div>
                                 </div>
                             </div>
                         </div>
@@ -37,8 +36,8 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>New Tasks!</div>
+                                    <div class="huge"><?= $bride_count  ?></div>
+                                    <div>Brides</div>
                                 </div>
                             </div>
                         </div>
@@ -59,8 +58,8 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
+                                    <div class="huge"><?= $event_count ?></div>
+                                    <div>New event</div>
                                 </div>
                             </div>
                         </div>

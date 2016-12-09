@@ -6,7 +6,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
-
+use common\models\Profiles;
+use common\models\Events;
 /**
  * Site controller
  */
@@ -60,10 +61,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $groom_count = Profiles::find()->where(['gender'=>'m'])->count();
+        $bride_count = Profiles::find()->where(['gender'=>'f'])->count();
+
+        $event_count = Events::find()->count();
+        return $this->render('index',['groom_count' => $groom_count,'bride_count' => $bride_count,'event_count' => $event_count]);
     }
 
-    /**
+ 
+   /**
      * Login action.
      *
      * @return string
