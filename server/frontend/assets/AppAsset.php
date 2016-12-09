@@ -22,7 +22,7 @@ class AppAsset extends AssetBundle
         'kandepohe_static/js/jquery.min.js',
         'kandepohe_static/js/bootstrap.min.js',
         'kandepohe_static/js/jquery.flexisel.js',
-        'kandepohe_static/js/jquery.magnific-popup',
+        'kandepohe_static/js/jquery.magnific-popup.js',
           
     ];
     public $depends = [

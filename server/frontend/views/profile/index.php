@@ -30,7 +30,7 @@ $this->title = 'Profiles';
         <h2>Name : <?= $customer->name?></h2>
         <div class="col_3">
             <div class="col-sm-4 row_2">
-                <img src="<?= 'css/'.$customer->profile_image?>" width="250px" height="150px"> 
+                <img src="<?= 'images/'.$customer->profile_image?>" width="250px" height="150px"> 
             </div>
             <div class="col-sm-8 row_1">
                 <table class="table_working_hours">
@@ -65,10 +65,6 @@ $this->title = 'Profiles';
                </ul>
                <div id="myTabContent" class="tab-content">
                   <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-                    <div class="tab_box">
-                        <h1>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h1>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor</p>
-                    </div>
                     <div class="basic_1">
                         <h3>Basics & Lifestyle</h3>
                         <div class="col-md-6 basic_1-left">

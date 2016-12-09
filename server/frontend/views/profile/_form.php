@@ -1,3 +1,4 @@
+
 <?php
 
 use yii\helpers\Html;
@@ -13,6 +14,18 @@ use yii\jui\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
+
+
+
+
+
+  <div class=" col-md-6 bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+               <ul id="myTab" class="nav nav-tabs nav-tabs1" role="tablist">
+                  <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">About Myself</a></li>
+               </ul>
+               <div id="myTabContent" class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                        
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'profile_image')->fileInput() ?>
@@ -36,6 +49,31 @@ use yii\jui\DatePicker;
     <?= $form->field($model, 'mobile')->textInput() ?>
 
     <?= $form->field($model, 'height')->textInput() ?>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class=" col-md-6 bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+               <ul id="myTab" class="nav nav-tabs nav-tabs1" role="tablist">
+                  <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">About Myself</a></li>
+               </ul>
+               <div id="myTabContent" class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+ 
 
     <?php 
         $bloodGroup=ArrayHelper::map(\common\models\Masters::find()->where(['type'=>'blood_group'])->asArray()->all(), 'name', 'name');
@@ -65,6 +103,19 @@ use yii\jui\DatePicker;
         $nakshatra=ArrayHelper::map(\common\models\Masters::find()->where(['type'=>'nakshatra'])->asArray()->all(), 'name', 'name');
         echo  $form->field($model, 'nakshatra')->dropDownList($nakshatra,['prompt'=>'Nakshatra']) 
     ?>
+</div>
+</div>
+</div>
+
+
+
+  <div class=" col-md-6 bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+               <ul id="myTab" class="nav nav-tabs nav-tabs1" role="tablist">
+                  <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">About Myself</a></li>
+               </ul>
+               <div id="myTabContent" class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+ 
 
     <?= $form->field($model, 'charan')->textInput() ?>
 
@@ -90,6 +141,18 @@ use yii\jui\DatePicker;
 
     <?= $form->field($model, 'sisters')->textInput() ?>
 
+</div>
+</div>
+</div>
+
+
+  <div class=" col-md-6 bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+               <ul id="myTab" class="nav nav-tabs nav-tabs1" role="tablist">
+                  <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">About Myself</a></li>
+               </ul>
+               <div id="myTabContent" class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+
     <?= $form->field($model, 'expected_caste')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'expected_min_age')->textInput() ?>
@@ -103,6 +166,9 @@ use yii\jui\DatePicker;
     <?= $form->field($model, 'expected_education')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'expected_occupation')->textInput(['maxlength' => true]) ?>
+</div>
+</div>
+</div>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success btn_1' : 'btn btn-primary btn_1']) ?>

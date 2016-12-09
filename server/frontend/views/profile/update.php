@@ -16,7 +16,6 @@ $this->title = 'Update Profile';
         <li class="current-page"><?= Html::encode($this->title) ?></li>
      </ul>
    </div>
-   	 <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

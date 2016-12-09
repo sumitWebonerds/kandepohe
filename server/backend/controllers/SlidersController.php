@@ -1,18 +1,18 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
 use Yii;
-use common\models\Education;
-use common\models\EducationSearch;
+use common\models\Sliders;
+use common\models\SlidersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+use yii\web\UploadedFile;
 /**
- * EducationController implements the CRUD actions for Education model.
+ * SlidersController implements the CRUD actions for Sliders model.
  */
-class EducationController extends Controller
+class SlidersController extends Controller
 {
     /**
      * @inheritdoc
@@ -20,35 +20,22 @@ class EducationController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['index','create','view','update','delete','logout'],
-                'rules' => [
-                    [
-                        'actions' => ['index','create','view','update','delete','logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
                     'delete' => ['POST'],
                 ],
             ],
         ];
     }
 
-
     /**
-     * Lists all Education models.
+     * Lists all Sliders models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new EducationSearch();
+        $searchModel = new SlidersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -58,7 +45,7 @@ class EducationController extends Controller
     }
 
     /**
-     * Displays a single Education model.
+     * Displays a single Sliders model.
      * @param integer $id
      * @return mixed
      */
@@ -70,36 +57,30 @@ class EducationController extends Controller
     }
 
     /**
-     * Creates a new Education model.
+     * Creates a new Sliders model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $id = Yii::$app->user->getId();
-        $count = Education::find()->where(['user_id' => $id])->count();
-        //echo $count;exit;
-        $exists = Education::find()->where( [ 'user_id' => $id  ] )->exists();
-        if($exists){
-            if($count>=1){
-                return $this->render('create', [
-                     'model' => $model,
-                 ]);
-           }            
-        }else{
-            $model = new Education();
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                 $this->redirect(array('site/index'));
-            } else {
-                 return $this->render('create', [
-                     'model' => $model,
-                 ]);
-            }
+        $model = new Sliders();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $imageName = "slider_image_".rand();
+               $model->image_file = UploadedFile::getInstance($model,'image_file');
+               $model->image_file->saveAs('images/'.$imageName.'.'.$model->image_file->extension);
+               $model->image_file = $imageName.'.'.$model->image_file->extension;
+               $model->save();
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         }
     }
 
     /**
-     * Updates an existing Education model.
+     * Updates an existing Sliders model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -118,7 +99,7 @@ class EducationController extends Controller
     }
 
     /**
-     * Deletes an existing Education model.
+     * Deletes an existing Sliders model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -131,15 +112,15 @@ class EducationController extends Controller
     }
 
     /**
-     * Finds the Education model based on its primary key value.
+     * Finds the Sliders model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Education the loaded model
+     * @return Sliders the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Education::findOne($id)) !== null) {
+        if (($model = Sliders::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

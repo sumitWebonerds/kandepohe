@@ -128,7 +128,7 @@ AppAsset::register($this);
 <?php $this->endBody() ?>
 
  <script type="text/javascript">
-         $(window).load(function() {
+         $(document).ready(function() {
             $("#flexiselDemo3").flexisel({
                 visibleItems: 6,
                 animationSpeed: 1000,

@@ -365,7 +365,7 @@ ul.nav_1 li.last{
 	text-align: center;
     background-color:rgba(12, 9, 10, 0.29);
     padding: 2em;
-    margin:11em 0 0 0;
+/*    margin:11em 0 0 0;*/
 }
 .input-group input[type="text"], select{
     -moz-box-shadow: none;

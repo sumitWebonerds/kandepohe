@@ -8,81 +8,122 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 use yii\helpers\Url;
+use common\models\Sliders;
 
 $this->title = 'Home';
 ?>
-<div class="banner">
-  <div class="container">
-    <div class="banner_info">
-      <h3>Millions of verified Members</h3>
-      <a href="<?php echo Url::toRoute('site/signup');?>" class="hvr-shutter-out-horizontal">Create your Profile</a>
-    </div>
-  </div>
-  <div class="profile_search">
-    <div class="container wrap_1">
-      <form action="">
-        <div class="search_top">
-         <div class="inline-block">
-          <label class="gender_1">I am looking for :</label>
-            <div class="age_box1" style="max-width: 100%; display: inline-block;">
-                <select>
-                    <option value="">* Select Gender</option>
-                    <option value="Male">Bride</option>
-                    <option value="Female">Groom</option>
-                </select>
-           </div>
-        </div>
-        <div class="inline-block">
-          <label class="gender_1">Located In :</label>
-            <div class="age_box1" style="max-width: 100%; display: inline-block;">
-                <select>
-                    <option value="">* Select State</option>
-                    <option value="Washington">Washington</option>
-                    <option value="Texas">Texas</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Virginia">Virginia</option>
-                    <option value="Colorado">Colorado</option>
-               </select>
+<section>
+    <div class="">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+      <?php foreach($sliders as $slider){ 
+        $i=0;
+        if($slider['status']){
+      ?>
+          <div class="item active">
+              <img src="../../backend/web/images/<?= $slider['image_file'] ?>" alt="...">
+              <div class="carousel-caption">
+                 <h1><?= $slider['heading']?></h1> 
+              </div>
           </div>
-        </div>
-        <div class="inline-block">
-          <label class="gender_1">Interested In :</label>
-            <div class="age_box1" style="max-width: 100%; display: inline-block;">
-                <select><option value="">* Select Interest</option>
+       <?php
+        }else{
+      ?>
+          <div class="item">
+              <img src="../../backend/web/images/<?= $slider['image_file']  ?>" alt="...">
+              <div class="carousel-caption">
+                <h1><?= $slider['heading']?></h1>
+              </div>
+          </div>
+      <?php    
+        }
+       $i++; 
+      }?>
+  </div> 
+  <ol class="carousel-indicators">
+    <?php  
+    for ($j=0; $j <= $i; $j++) { 
+    ?>
+        <li data-target="#carousel-example-generic" data-slide-to="<?= $j?>" ></li>
+    <?php }?>
+  </ol>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+  </a>
+    </div>
+    </div>
+    <div class="profile_search">
+      <div class="container wrap_1">
+        <form action="">
+          <div class="search_top">
+            <div class="inline-block">
+              <label class="gender_1">I am looking for :</label>
+              <div class="age_box1" style="max-width: 100%; display: inline-block;">
+                <select>
+                  <option value="">* Select Gender</option>
+                  <option value="Male">Bride</option>
+                  <option value="Female">Groom</option>
+                </select>
+              </div>
+            </div>
+            <div class="inline-block">
+              <label class="gender_1">Located In :</label>
+                <div class="age_box1" style="max-width: 100%; display: inline-block;">
+                  <select>
+                      <option value="">* Select State</option>
+                      <option value="Washington">Washington</option>
+                      <option value="Texas">Texas</option>
+                      <option value="Georgia">Georgia</option>
+                      <option value="Virginia">Virginia</option>
+                      <option value="Colorado">Colorado</option>
+                  </select>
+                </div>
+            </div>
+            <div class="inline-block">
+              <label class="gender_1">Interested In :</label>
+                <div class="age_box1" style="max-width: 100%; display: inline-block;">
+                  <select>
+                    <option value="">* Select Interest</option>
                     <option value="Sports &amp; Adventure">Sports &amp; Adventure</option>
                     <option value="Movies &amp; Entertainment">Movies &amp; Entertainment</option>
                     <option value="Arts &amp; Science">Arts &amp; Science</option>
                     <option value="Technology">Technology</option>
                     <option value="Fashion">Fashion</option>
-               </select>
+                  </select>
+                </div>
+            </div>
           </div>
-       </div>
-     </div>
-     <div class="inline-block">
-       <div class="age_box2" style="max-width: 220px;">
-        <label class="gender_1">Age :</label>
-        <input class="transparent" placeholder="From:" style="width: 34%;" type="text" value="">&nbsp;-&nbsp;<input class="transparent" placeholder="To:" style="width: 34%;" type="text" value="">
-       </div>
-     </div>
-       <div class="inline-block">
-          <label class="gender_1">Status :</label>
+          <div class="inline-block">
+            <div class="age_box2" style="max-width: 220px;">
+              <label class="gender_1">Age :</label>
+              <input class="transparent" placeholder="From:" style="width: 34%;" type="text" value="">&nbsp;-&nbsp;<input class="transparent" placeholder="To:" style="width: 34%;" type="text" value="">
+            </div>
+          </div>
+          <div class="inline-block">
+            <label class="gender_1">Status :</label>
             <div class="age_box1" style="max-width: 100%; display: inline-block;">
-                <select>
-                    <option value="">* Select Status</option>
-                    <option value="Single">Single</option>
-                    <option value="Married">Married</option>
-                    <option value="In a Relationship">In a Relationship</option>
-                    <option value="It's Complicated">It's Complicated</option>
-                </select>
+              <select>
+                <option value="">* Select Status</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="In a Relationship">In a Relationship</option>
+                <option value="It's Complicated">It's Complicated</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="submit inline-block">
-           <input id="submit-btn" class="hvr-wobble-vertical" type="submit" value="Find Matches">
-        </div>
-     </form>
-    </div>
-  </div> 
-</div> 
+          <div class="submit inline-block">
+             <input id="submit-btn" class="hvr-wobble-vertical" type="submit" value="Find Matches">
+          </div>
+        </form>
+      </div>
+    </div>    
+</section> 
 <div class="grid_1">
       <div class="container">
         <h1>Featured Profiles</h1>
@@ -136,34 +177,6 @@ $this->title = 'Home';
              <h3><span class="m_3">Profile ID : MI-387412</span><br>28, Christian, Australia<br>Corporate</h3></a></div>
           </li>
         </ul>
-        <script type="text/javascript">
-         $(window).load(function() {
-            $("#flexiselDemo3").flexisel({
-                visibleItems: 6,
-                animationSpeed: 1000,
-                autoPlay:false,
-                autoPlaySpeed: 3000,            
-                pauseOnHover: true,
-                enableResponsiveBreakpoints: true,
-                responsiveBreakpoints: { 
-                    portrait: { 
-                        changePoint:480,
-                        visibleItems: 1
-                    }, 
-                    landscape: { 
-                        changePoint:640,
-                        visibleItems: 2
-                    },
-                    tablet: { 
-                        changePoint:768,
-                        visibleItems: 3
-                    }
-                }
-            });
-            
-        });
-       </script>
-       <script type="text/javascript" src="js/jquery.flexisel.js"></script>
     </div>
 </div>
 <div class="grid_2">
