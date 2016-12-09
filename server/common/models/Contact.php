@@ -30,7 +30,8 @@ class Contact extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'phone', 'email', 'message'], 'required'],
-            [['phone'], 'integer'],
+            [['email'], 'email'],
+            [['phone'], 'match','pattern'=>'/^[0-9]{10}$/'],
             [['message'], 'string'],
             [['name', 'email'], 'string', 'max' => 255],
         ];

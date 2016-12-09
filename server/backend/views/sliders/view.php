@@ -28,20 +28,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            // 'id',
+            'id',
             'heading',
             'caption:ntext',
             [
                 'attribute'=>'image_file',
-                'value'=>'css/'.$model->image_file,
-                'format' => ['image',['width'=>'300','height'=>'100','class'=>'img-responsive']],
+                'value'=>'images/'.$model->image_file,
+                'format' => ['image',['width'=>'200','height'=>'100']],
             ],
             'status',
-            // 'created_by',
-            // 'created_at',
-            // 'updated_by',
-            // 'updated_at',
-            // 'is_deleted',
         ],
     ]) ?>
 

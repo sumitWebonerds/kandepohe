@@ -33,7 +33,7 @@ class Education extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'start_date', 'end_date'], 'required'],
+            [[ 'start_date', 'end_date','education_area','education','institute','result','place'], 'required'],
             [['user_id'], 'integer'],
             [['start_date', 'end_date'], 'safe'],
             [['education_area', 'education', 'institute', 'result', 'place'], 'string', 'max' => 255],

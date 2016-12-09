@@ -18,7 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'image_file')->fileInput() ?>
 
-    <?= $form->field($model, 'status')->dropDownList([ '1' => 'Active', '0' => 'Deactive', ], ['prompt' => '-Select Status-']) ?>
+    <?= $form->field($model, 'status')->textInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
