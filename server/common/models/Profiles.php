@@ -65,7 +65,7 @@ class Profiles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name','marital_status', 'mobile', 'gender','profile_image','country', 'state', 'city', 'blood_group'], 'required'],
+            [['name','marital_status', 'mobile', 'gender','profile_image','date_of_birth','country', 'state', 'city', 'blood_group'], 'required'],
             [['mobile', 'charan', 'brothers', 'sisters', 'expected_min_age', 'expected_max_age'], 'integer'],
             [['mobile'],'match','pattern'=>'/^[0-9]{10}$/'],
             [['gender'], 'string'],

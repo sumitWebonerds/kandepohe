@@ -63,10 +63,18 @@ class EducationController extends Controller
      */
     public function actionCreate()
     {
+        if(isset($_GET['id']))
+        {
+            $id=$_GET['id'];
+        }
+
         $model = new Education();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) ) {
+            $model->user_id=$id;
+            $model->save();
+            return $this->redirect(['contact/create', 'id' => $id]);
+
         } else {
             return $this->render('create', [
                 'model' => $model,

@@ -7,20 +7,19 @@ use Yii;
 /**
  * This is the model class for table "sliders".
  *
- * @property integer $id
+ * @property string $id
  * @property string $heading
  * @property string $caption
  * @property string $image_file
- * @property integer $active
- * @property integer $created_by
+ * @property integer $status
+ * @property string $created_by
  * @property string $created_at
- * @property integer $updated_by
+ * @property string $updated_by
  * @property string $updated_at
  * @property integer $is_deleted
  */
 class Sliders extends \yii\db\ActiveRecord
 {
-    const STATUS_ACTIVE = 1;
     /**
      * @inheritdoc
      */
@@ -37,9 +36,10 @@ class Sliders extends \yii\db\ActiveRecord
         return [
             [['heading', 'caption', 'image_file', 'status'], 'required'],
             [['caption'], 'string'],
-            [['status'], 'integer'],
+            [['image_file'],'file'],
+            [['status', 'created_by', 'updated_by', 'is_deleted'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
             [['heading'], 'string', 'max' => 255],
-            [['image_file'], 'file'],
         ];
     }
 
@@ -49,7 +49,7 @@ class Sliders extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            // 'id' => 'ID',
+            'id' => 'ID',
             'heading' => 'Heading',
             'caption' => 'Caption',
             'image_file' => 'Image File',
